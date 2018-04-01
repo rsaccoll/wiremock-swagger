@@ -1,0 +1,54 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Sample Swagger Description",
+        "description": "Sample Swagger Description",
+        "version": "v1"
+    },
+    "basePath": "/v1",
+    "schemes": [
+        "https"
+    ],
+    "paths": {
+        "/health": {
+            "get": {
+                "description": "Returns the service health",
+                "parameters" : [{
+                    "description": "When set to true returns a fresh service status",
+                    "name"       : "fresh",
+                    "default"    : false,
+                    "type"       : "boolean",
+                    "required"   : false,
+                    "in"         : "query"
+                }],
+                "produces"   : ["application/json"],
+                "tags"       : [ "health" ],
+                "responses"  : {
+                    "200": {
+                        "description": "Health Response",
+                        "schema": {
+                            "$ref": "#/definitions/health-obj"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "health-obj": {
+            "type": "object",
+            "required": [
+                "status"
+            ],
+            "properties": {
+                "status": {
+                    "type": "string",
+                    "enum": [
+                        "OK",
+                        "NOK"
+                    ]
+                }
+            }
+        }
+    }
+}

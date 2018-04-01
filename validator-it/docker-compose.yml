@@ -1,0 +1,16 @@
+version: "3.0"
+services:
+  wiremock-swagger-validator:
+    build: .
+    image: wiremock-swagger-validator:latest
+    labels:
+    - wiremock-swagger-validation
+    command: "--extensions=org.wiremock.extensions.swagger.SwaggerValidationExtension --verbose"
+    volumes:
+    - ./src/test/resources/wiremock:/home/wiremock
+    working_dir: /home/wiremock
+    ports:
+    - 8080:8080
+    expose:
+    - 8080
+

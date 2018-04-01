@@ -1,0 +1,17 @@
+{
+    "request":{
+        "urlPath": "/v1/health",
+        "queryParameters" : {
+            "response" : {
+                "equalTo" : "invalid"
+            }
+        }
+    },
+    "response": {
+        "status" : 200,
+        "bodyFileName": "invalid-response.json",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}

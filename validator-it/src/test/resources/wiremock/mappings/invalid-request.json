@@ -1,0 +1,12 @@
+{
+    "request":{
+        "urlPath": "/v2/health"
+    },
+    "response": {
+        "status" : 200,
+        "bodyFileName": "valid-response.json",
+        "headers": {
+            "Content-Type": "application/json"
+        }
+    }
+}
