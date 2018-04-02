@@ -10,7 +10,7 @@ services:
     - ./src/test/resources/wiremock:/home/wiremock
     working_dir: /home/wiremock
     ports:
-    - 8080:8080
+    - 8080
     expose:
     - 8080
 
