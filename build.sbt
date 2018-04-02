@@ -32,7 +32,7 @@ lazy val `validator-it` = (project in file("validator-it"))
     envVars := {
       def queryDockerInstancePort(serviceName:String, port:Int, default:String = ""):String = {
         Try{
-          val ipAndPort = s"docker-compose -f ./validator-it/docker-compose.yml port $serviceName $port".!!
+          val ipAndPort = s"docker-compose -f validator-it/docker-compose.yml port $serviceName $port".!!
           ipAndPort.trim.split(':').last
         }.getOrElse(default)
       }
@@ -41,6 +41,7 @@ lazy val `validator-it` = (project in file("validator-it"))
         "WIREMOCK_PORT" -> queryDockerInstancePort("wiremock-swagger-validator", 8080)
       )
     },
+    fork             := true,
     assembleArtifact := false,
     publishArtifact  := false,
     validatorItDependencies
