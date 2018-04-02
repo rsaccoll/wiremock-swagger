@@ -2,7 +2,7 @@ version: "3.0"
 services:
   wiremock-swagger-validator:
     build: .
-    image: wiremock-swagger-validator:latest
+    image: wiremock-swagger/validator
     labels:
     - wiremock-swagger-validation
     command: "--extensions=org.wiremock.extensions.swagger.SwaggerValidationExtension --verbose"

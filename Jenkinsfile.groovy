@@ -54,7 +54,7 @@ ansiColor('xterm') {
                     ${sbtFolder}/sbt "; project validator ; clean ; assembly "
                 """
                 dir('validator') {
-                    docker.build("wiremock-swagger-validator", ".")
+                    docker.build("wiremock-swagger/validator", ".")
                 }
             }
 
@@ -77,8 +77,8 @@ ansiColor('xterm') {
 
             stage("Publish"){
                 docker.withRegistry("${docker_account}", "${docker_registry}") {
-                    docker.image("wiremock-swagger-validator").push("wiremock-swagger/validator:latest")
-                    docker.image("wiremock-swagger-validator").push("wiremock-swagger/validator:${pipeline_version}")
+                    docker.image("wiremock-swagger/validator").push("latest")
+                    docker.image("wiremock-swagger/validator").push("${pipeline_version}")
                 }
             }
 
