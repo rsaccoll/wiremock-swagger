@@ -16,12 +16,14 @@ class SwaggerSpecs
 
   "Given 'processSwaggerDefinition'" - {
     "should be possible to load from a JsonPayload" in {
+      println(s"URI From '/swagger.json' - ${getClass.getResource("/swagger.json").toURI}")
       val jsonPayload = processSwaggerDefinition(toPath("/swagger.json"))
       println(jsonPayload)
 //      toJsonNode(jsonPayload) shouldBe toJsonNode(Some(swaggerJsonPayload))
     }
 
     "should be possible to load from a YamlPayload" in {
+      println(s"URI From '/swagger.yaml' - ${getClass.getResource("/swagger.yaml").toURI}")
       val jsonPayload = processSwaggerDefinition(toPath("/swagger.yaml"))
       println(jsonPayload)
 //      toJsonNode(jsonPayload) shouldBe toJsonNode(Some(swaggerJsonPayload))
@@ -37,7 +39,6 @@ class SwaggerSpecs
   }
 
   implicit private def toPath(fileName:String):Path = {
-    println(getClass.getResource(fileName).toURI)
     Paths.get(getClass.getResource(fileName).toURI)
   }
 }
