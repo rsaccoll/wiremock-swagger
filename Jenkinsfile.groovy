@@ -34,9 +34,8 @@ ansiColor('xterm') {
             }
 
             stage("Build & Unit Tests"){
-                """
+                sh """
                     ${sbtFolder}/sbt clean coverage test coverageReport coverageAggregate
-                target/scala-2.12/scoverage-report/index.html
                 """
                 publishHTML([
                     allowMissing: true,
@@ -61,7 +60,7 @@ ansiColor('xterm') {
             stage("Functional Tests"){
                 sh """
                     echo "Running Component Tests"
-                    docker-compose -f validator-it/docker-compose.yml up
+                    docker-compose -f validator-it/docker-compose.yml up -d
                 """
                 try {
                     sh """
