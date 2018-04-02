@@ -34,7 +34,7 @@ class SwaggerSpecs
     payload.map(mapper.reader().readTree)
   }
 
-  implicit private def toPath(fileName:String):Path = {
+  private def toPath(fileName:String):Path = {
     Paths.get(getClass.getResource(fileName).toURI)
   }
 }
